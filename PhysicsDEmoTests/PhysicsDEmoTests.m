@@ -26,9 +26,18 @@
     [super tearDown];
 }
 
-- (void)testExample
+typedef NS_OPTIONS(NSUInteger, BitMasks) {
+    First = 1 << 0,
+    Second = 1 << 1,
+    Third = 1 << 2,
+};
+
+- (void) testBitMasks
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    int maskCheck = First | Second;
+    XCTAssert(maskCheck & First, @"I'm in there");
+    XCTAssertFalse(maskCheck & Third, @"I'm not");
+    
 }
 
 @end
